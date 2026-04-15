@@ -3,13 +3,21 @@ from .models import *
 
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
+<<<<<<< HEAD
         model = se_students
+=======
+        model = ga_students
+>>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
         fields = '__all__'
 
 
 class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
+<<<<<<< HEAD
         model = cc_subjects
+=======
+        model = ga_subjects
+>>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
         fields = '__all__'
 
 

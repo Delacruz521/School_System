@@ -51,4 +51,8 @@ function deleteStudent(id) {
 }
 
 // INIT
+<<<<<<< HEAD
 loadStudents();
+=======
+loadStudents();
+>>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
