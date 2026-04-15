@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-<<<<<<< HEAD
 # ================================
 # STUDENT INFORMATION
 # ================================
@@ -27,21 +26,6 @@ class se_students(models.Model):
 # ================================
 # ASSESSMENT & GRADING
 # ================================
-=======
-class ga_students(models.Model):
-    student_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-
-    class Meta:
-        db_table = 'ga_students'
-
-class ga_subjects(models.Model):
-    subject_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-
-    class Meta:
-        db_table = 'ga_subjects'
->>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
 
 class ga_academicyears(models.Model):
     ay_id = models.AutoField(primary_key=True)
@@ -74,11 +58,7 @@ class ga_sections(models.Model):
 
 class ga_exam(models.Model):
     exam_id = models.AutoField(primary_key=True)
-<<<<<<< HEAD
     subject_id = models.ForeignKey('cc_subjects', on_delete=models.CASCADE)
-=======
-    subject_id = models.ForeignKey('ga_subjects', on_delete=models.CASCADE)
->>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
     ay = models.ForeignKey('ga_academicyears', on_delete=models.CASCADE)
 
     GRADING_PERIOD = [
@@ -94,10 +74,7 @@ class ga_exam(models.Model):
         ('Quarterly', 'Quarterly'),
         ('Periodic', 'Periodic'),
     ]
-<<<<<<< HEAD
 
-=======
->>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
     exam_type = models.CharField(max_length=20, choices=EXAM_TYPE)
     max_score = models.PositiveIntegerField()
     exam_date = models.DateField()
@@ -107,11 +84,7 @@ class ga_exam(models.Model):
 
 class ga_assignment(models.Model):
     assignment_id = models.AutoField(primary_key=True)
-<<<<<<< HEAD
     subject_id = models.ForeignKey('cc_subjects', on_delete=models.CASCADE)
-=======
-    subject_id = models.ForeignKey('ga_subjects', on_delete=models.CASCADE)
->>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
     section_id = models.ForeignKey('ga_sections', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
 
@@ -119,11 +92,7 @@ class ga_assignment(models.Model):
         ('Written Work', 'Written Work'),
         ('Performance Task', 'Performance Task'),
     ]
-<<<<<<< HEAD
     
-=======
-
->>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
     category = models.CharField(max_length=50, choices=CATEGORY)
     raw_score = models.PositiveIntegerField()
     weight = models.FloatField()
@@ -146,7 +115,6 @@ class ga_rubrics(models.Model):
 
 class ga_studentgrades(models.Model):
     grade_record_id = models.AutoField(primary_key=True)
-<<<<<<< HEAD
     student_id = models.ForeignKey('se_students', on_delete=models.CASCADE)
     assessment = models.ForeignKey('ga_exam', on_delete=models.CASCADE, null=True, blank=True)
 
@@ -156,11 +124,6 @@ class ga_studentgrades(models.Model):
     ]
 
     assessment_type = models.CharField(max_length=20, choices=ASSESSMENT_TYPE, null=True, blank=True)
-=======
-    student_id = models.ForeignKey('ga_students', on_delete=models.CASCADE)
-    exam = models.ForeignKey('ga_exam', on_delete=models.CASCADE, null=True, blank=True)
-    assignment = models.ForeignKey('ga_assignment', on_delete=models.CASCADE, null=True, blank=True)
->>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
     raw_score = models.PositiveIntegerField()
     percentage_score = models.FloatField()
     date_recorded = models.DateField(auto_now_add=True)
@@ -171,13 +134,8 @@ class ga_studentgrades(models.Model):
 
 class ga_grades(models.Model):
     summary_grade_id = models.AutoField(primary_key=True)
-<<<<<<< HEAD
     student_id = models.ForeignKey('se_students', on_delete=models.CASCADE)
     subject_id = models.ForeignKey('cc_subjects', on_delete=models.CASCADE)
-=======
-    student_id = models.ForeignKey('ga_students', on_delete=models.CASCADE)
-    subject_id = models.ForeignKey('ga_subjects', on_delete=models.CASCADE)
->>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
     ay_id = models.ForeignKey('ga_academicyears', on_delete=models.CASCADE)
     GRADING_PERIOD = [
         ('1st', '1st'),
@@ -217,11 +175,7 @@ class ga_gradescale(models.Model):
 
 class ga_reportcards(models.Model):
     card_id = models.AutoField(primary_key=True)
-<<<<<<< HEAD
     student_id = models.ForeignKey('se_students', on_delete=models.CASCADE)
-=======
-    student_id = models.ForeignKey('ga_students', on_delete=models.CASCADE)
->>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
     ay = models.ForeignKey('ga_academicyears', on_delete=models.CASCADE)
     general_average = models.FloatField()   
     attendance_present = models.IntegerField()
@@ -241,11 +195,7 @@ class ga_reportcards(models.Model):
 class ga_transcripts(models.Model):
     transcript_id = models.AutoField(primary_key=True)
 
-<<<<<<< HEAD
     student = models.ForeignKey('se_students', on_delete=models.CASCADE)
-=======
-    student = models.ForeignKey('ga_students', on_delete=models.CASCADE)
->>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
 
     total_units_earned = models.IntegerField()
     gpa = models.FloatField()
@@ -271,7 +221,6 @@ class ga_gradeshistory(models.Model):
     change_timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-<<<<<<< HEAD
         db_table = 'ga_gradeshistory'
 
 
@@ -387,6 +336,3 @@ class cc_coursenotes(models.Model):
 
     class Meta:
         db_table = 'cc_coursenotes'
-=======
-        db_table = 'ga_gradeshistory'
->>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
