@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment System</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>📊 Grade System</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Students</a>
+    <a href="#">Subjects</a>
+    <a href="#">Grades</a>
+    <a href="#">Reports</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+    <div class="header">
+        <h2>Student Dashboard</h2>
+    </div>
+
+    <!-- ADD STUDENT -->
+    <div class="card">
+        <h3>Add Student</h3>
+        <input type="text" id="name" placeholder="Student Name">
+        <button class="add-btn" onclick="addStudent()">Add</button>
+    </div>
+
+    <!-- TABLE -->
+    <div class="card">
+        <h3>Student List</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="studentTable"></tbody>
+        </table>
+    </div>
+
+</div>
+<script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>
