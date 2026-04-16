@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'assessments',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -57,11 +58,7 @@ ROOT_URLCONF = 'assesspro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-<<<<<<< HEAD
         'DIRS': [os.path.join(BASE_DIR, 'templates', 'static')],
-=======
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
->>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,8 +122,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-<<<<<<< HEAD
+
 STATIC_URL = '/static/'
-=======
-STATIC_URL = '/static/'
->>>>>>> 174518e34e0d9a80c29f3f23d280ed88bdee9ba4
+
+

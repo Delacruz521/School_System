@@ -27,13 +27,6 @@ class se_students(models.Model):
 # ASSESSMENT & GRADING
 # ================================
 
-class ga_academicyears(models.Model):
-    ay_id = models.AutoField(primary_key=True)
-    year = models.CharField(max_length=20)
-
-    class Meta:
-        db_table = 'ga_academicyears'
-
 
 class ga_teacher(models.Model):
     faculty_id = models.AutoField(primary_key=True)
@@ -59,7 +52,7 @@ class ga_sections(models.Model):
 class ga_exam(models.Model):
     exam_id = models.AutoField(primary_key=True)
     subject_id = models.ForeignKey('cc_subjects', on_delete=models.CASCADE)
-    ay = models.ForeignKey('ga_academicyears', on_delete=models.CASCADE)
+    ay = models.ForeignKey('cc_academicyears', on_delete=models.CASCADE)
 
     GRADING_PERIOD = [
         ('1st', '1st'),
@@ -136,7 +129,7 @@ class ga_grades(models.Model):
     summary_grade_id = models.AutoField(primary_key=True)
     student_id = models.ForeignKey('se_students', on_delete=models.CASCADE)
     subject_id = models.ForeignKey('cc_subjects', on_delete=models.CASCADE)
-    ay_id = models.ForeignKey('ga_academicyears', on_delete=models.CASCADE)
+    ay_id = models.ForeignKey('cc_academicyears', on_delete=models.CASCADE)
     GRADING_PERIOD = [
         ('1st', '1st'),
         ('2nd', '2nd'),
@@ -176,7 +169,7 @@ class ga_gradescale(models.Model):
 class ga_reportcards(models.Model):
     card_id = models.AutoField(primary_key=True)
     student_id = models.ForeignKey('se_students', on_delete=models.CASCADE)
-    ay = models.ForeignKey('ga_academicyears', on_delete=models.CASCADE)
+    ay = models.ForeignKey('cc_academicyears', on_delete=models.CASCADE)
     general_average = models.FloatField()   
     attendance_present = models.IntegerField()
     attendance_absent = models.IntegerField()
@@ -230,6 +223,13 @@ class ga_gradeshistory(models.Model):
 # COURSE & CURRICULUM MANAGEMENT
 # ================================
 
+class cc_academicyears(models.Model):
+    ay_id = models.AutoField(primary_key=True)
+    year = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = 'cc_academicyears'
+
 class cc_subjects(models.Model):
     subject_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
@@ -277,7 +277,7 @@ class cc_prerequisites(models.Model):
 
 class cc_classsections(models.Model):
     section_id = models.AutoField(primary_key=True)
-    ay = models.ForeignKey('ga_academicyears', on_delete=models.CASCADE)
+    ay = models.ForeignKey('cc_academicyears', on_delete=models.CASCADE)
     course = models.ForeignKey('cc_courses', on_delete=models.CASCADE)
     grade_level_or_year = models.CharField(max_length=20)
     section_name = models.CharField(max_length=50)

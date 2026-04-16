@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import *
+from assessments.models import *
 
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,7 +15,7 @@ class SubjectSerializer(serializers.ModelSerializer):
 
 class AcademicYearSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ga_academicyears
+        model = cc_academicyears
         fields = '__all__'
 
 

@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from . import views
 from .views import *
+from api.views import *
 
 router = DefaultRouter()
 router.register(r'students', StudentViewSet)
@@ -15,6 +15,13 @@ router.register(r'student-grades', StudentGradesViewSet)
 router.register(r'grades', GradesViewSet)
 
 urlpatterns = [
-    path('', views.dashboard, name='dashboard'),   # 🖥️ HTML DASHBOARD
-    path('api/', include(router.urls)),            # 🔌 API ROUTER
+    path('', dashboard, name='dashboard'),
+    
+    # EXAM URLS
+    path('create-exam/', create_exam, name='create-exam'),
+    
+    # SUBJUCT URLS
+
+    # API URL
+    path('api/', include(router.urls)),            # API ROUTER
 ]
